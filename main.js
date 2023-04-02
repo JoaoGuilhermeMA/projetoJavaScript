@@ -1,17 +1,17 @@
-// Pom ----------------------------------------
-function tocaSomPom () {
-    document.querySelector('#som_tecla_pom').play();
+function tocaSom (idElementoAudio) {
+    document.querySelector(idElementoAudio).play();
 }
 
 const listaDeTeclas = document.querySelectorAll('.tecla');
 
-let contador = 0;
+for (let contador = 0; contador < listaDeTeclas.length; contador++) {
 
-while (contador < 9) {
-    listaDeTeclas[0].onclick = tocaSomPom;
+    const tecla = listaDeTeclas[contador]
+    const instrumento = tecla.classList[1];
+    // template string
+    const idAudio = `#som_${instrumento}`
 
-    contador = contador + 1;
-
-    console.log(contador);
-
+    tecla.onclick = function(){
+        tocaSom(idAudio)
+    }
 }
